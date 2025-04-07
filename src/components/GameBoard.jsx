@@ -34,6 +34,8 @@ const GameBoard = ({ difficulty, reset, setIsGameStarted }) => {
         setMatches([]);
         setAttempts(0);
         setIsGameStarted(false);
+        setStartTime(Date.now());
+        setEndTime(null);
 
         setTimeout(() => {
             const size = gridSize[difficulty];
