@@ -34,7 +34,7 @@ const GameBoard = ({ difficulty, reset, setIsGameStarted }) => {
         setMatches([]);
         setAttempts(0);
         setIsGameStarted(false);
-        setStartTime(Date.now());
+        setStartTime(null);
         setEndTime(null);
 
         setTimeout(() => {
