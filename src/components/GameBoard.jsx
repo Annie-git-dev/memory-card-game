@@ -30,22 +30,20 @@ const GameBoard = ({ difficulty, reset, setIsGameStarted }) => {
         setTimeout(() => {
             const size = gridSize[difficulty];
             const pairCount = (size * size) / 2;
-    
+
             const selectedContent = shuffle([...cardContentPool]).slice(0, pairCount);
             const duplicated = shuffle([...selectedContent, ...selectedContent]);
-    
+
             const board = duplicated.map((content, index) => ({
                 id: index,
                 content,
                 flipped: false,
                 matched: false
             }));
-    
+
             setCards(board);
         }, 50)
     };
-
-
 
     const handleCardClick = (id) => {
         if (!startTime) {
