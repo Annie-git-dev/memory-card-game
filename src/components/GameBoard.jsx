@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Card from "./Card";
 import Stats from "./Stats";
+import { gridSize, cardContentPool } from "../constants";
+import { shuffle } from "../utils";
 
 const GameBoard = ({ difficulty, reset, setIsGameStarted }) => {
     const [cards, setCards] = useState([]);
@@ -9,18 +11,6 @@ const GameBoard = ({ difficulty, reset, setIsGameStarted }) => {
     const [attempts, setAttempts] = useState(0);
     const [startTime, setStartTime] = useState(null);
     const [endTime, setEndTime] = useState(null);
-
-    const gridSize = {
-        easy: 4,
-        medium: 6,
-        hard: 8,
-    };
-
-    const cardContentPool = [
-        "🍎", "🍌", "🍍", "🥝", "🍋", "🍓", "🍑", "🥭", "🍅", "🍏", "🍐", "🍆",
-        "🍇", "🥥", "🍒", "🍊", "🍉", "🌽", "🍔", "🍕", "🍩", "🍪", "🍰", "🍦",
-        "🧁", "🐶", "🐱", "🐵", "🐸", "🧸", "🪁", "🎈"
-    ];
 
     useEffect(() => {
         if (reset) {
@@ -55,9 +45,7 @@ const GameBoard = ({ difficulty, reset, setIsGameStarted }) => {
         }, 50)
     };
 
-    const shuffle = (array) => {
-        return array.sort(() => Math.random() - 0.5);
-    };
+
 
     const handleCardClick = (id) => {
         if (!startTime) {
@@ -109,7 +97,7 @@ const GameBoard = ({ difficulty, reset, setIsGameStarted }) => {
     return (
         <>
             <div className="grid gap-4" style={gridStyle}>
-                {cards?.map((card, index) => (
+                {cards.map((card, index) => (
                     <Card
                         key={index}
                         id={index}
@@ -121,7 +109,7 @@ const GameBoard = ({ difficulty, reset, setIsGameStarted }) => {
                 ))}
             </div>
 
-            {cards?.length > 0 && (
+            {cards.length > 0 && (
                 <Stats
                     matches={matches}
                     cards={cards}

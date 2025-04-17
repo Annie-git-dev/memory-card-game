@@ -1,5 +1,3 @@
-import React from "react";
-
 const Stats = ({ matches, cards, attempts, startTime, endTime, startNewGame }) => {
     const accuracy = attempts > 0 ? Math.round((matches.length / attempts) * 100) : 0;
     const duration = endTime ? Math.floor((endTime - startTime) / 1000) : 0;

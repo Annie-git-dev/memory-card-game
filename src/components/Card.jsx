@@ -1,5 +1,3 @@
-import React from "react";
-
 const Card = ({ id, content, flipped, matched, onClick }) => {
     return (
         <div className="w-16 h-16 cursor-pointer [perspective:1000px]" onClick={() => onClick(id)}>
